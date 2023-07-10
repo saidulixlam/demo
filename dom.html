@@ -27,19 +27,14 @@
       <li class="list-group-item">Item 2</li>
       <li class="list-group-item">Item 3</li>
       <li class="list-group-item">Item 4</li>
-      <li>Item 5</li>
     </ul>
    </div>
   </div>
   <script>
-    let items= document.getElementsByTagName('li');
-    items[2].style.backgroundColor='green';
-    for(var i=0;i<items.length;i++){
-      items[i].style.fontWeight='bold';
-    }
-    items[4].style.color='blue';
-    items[4].style.marginLeft='1rem';
-    items[4].style.listStyle='none';
+    var second=document.querySelector('.list-group-item:nth-child(2)');
+    second.style.backgroundColor='green';
+    var third=document.querySelector('.list-group-item:nth-child(3)');
+    third.style.display='none';
   </script>
 </body>
 </html>
