@@ -32,9 +32,13 @@
   </div>
   <script>
     var second=document.querySelector('.list-group-item:nth-child(2)');
-    second.style.backgroundColor='green';
-    var third=document.querySelector('.list-group-item:nth-child(3)');
-    third.style.display='none';
+    second.style.color='green';
+    // var third=document.querySelector('.list-group-item:nth-child(3)');
+    // third.style.display='none';
+    var list=document.querySelectorAll('li:nth-child(odd)');
+    for(var i=0;i<list.length;i++){
+      list[i].style.backgroundColor='green';
+    }
   </script>
 </body>
 </html>
