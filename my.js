@@ -1,44 +1,37 @@
-// var second=document.querySelector('.list-group-item:nth-child(2)');
-    // second.style.color='green';
-    // // var third=document.querySelector('.list-group-item:nth-child(3)');
-    // // third.style.display='none';
-    // var list=document.querySelectorAll('li:nth-child(odd)');
-    // for(var i=0;i<list.length;i++){
-    //   list[i].style.backgroundColor='green';
-    // }
-    var itemlist = document.querySelector('#items');
-    //to access parentnode or parent element
-    //console.log(itemlist.parentNode);
-   // console.log(itemlist.parentElement);
-    //to access children
-    //console.log(itemlist.childNodes);//it gives all the nodes
-    //console.log(itemlist.children);//it gives elements
-    //firstchild
-    const first =itemlist.children[0];//from array of elemnts
-    first.textContent="Hello 1";
-    //console.log(first);
-    //console.log(itemlist.firstChild);//return the first node 
-    //firstElementchild
-    // console.log(itemlist.firstElementChild);//return first element
-    // console.log(itemlist.lastElementChild);//return last elemnt
-    // console.log(itemlist.lastChild);//return last node
-    //sibling is kinda same as child to access
-    //create child
-    //ne div
-    var newDiv=document.createElement('div');
-    //adding class & id
-    newDiv.className="hello";
-    newDiv.id='hello1';
-    newDiv.setAttribute('title','Hello Dear');
-    var textNod=document.createTextNode('Hello World !');
-    // 
-    newDiv.appendChild(textNod);
-    //console.log(newDiv);
-    newDiv.style.fontWeight='bold';
-    newDiv.style.fontSize='28px';
-    //now inserting new div tomactual content
-     var container=document.querySelector('header .container');
-     //console.log(container);
-     var hope=document.querySelector('header h1');
-     //console.log(hope);
-    container.insertBefore(newDiv, hope);
+const form=document.getElementById('addForm');
+const list=document.getElementById('items');
+form.addEventListener('submit',addItem);
+function addItem(e){//adding elements to the list
+    e.preventDefault();
+    // console.log(1);
+    const input=document.getElementById('item');
+    const inputValue=input.value;
+    //console.log(inputValue);
+    const li = document.createElement('li');
+    li.className='list-group-item';
+    
+    li.appendChild(document.createTextNode(inputValue));
+    //console.log(li);
+    const btn=document.createElement('button');
+    btn.className='btn btn-danger float-right delete';
+    btn.appendChild(document.createTextNode('X'));
+    li.appendChild(btn);
+    list.appendChild(li);
+
+    //creating edit button for new listitem
+    const edtbtn=document.createElement('button');
+    edtbtn.className='btn btn-primary mx-2 float-right edit';
+    edtbtn.appendChild(document.createTextNode('Edit'));
+    li.appendChild(edtbtn);
+    list.appendChild(li);
+}//add element complete
+//creating delete element
+list.addEventListener('click',removeItem);
+function removeItem(e){
+    if(e.target.classList.contains('delete')){
+      if(confirm('Are You Sure?')){
+        var li = e.target.parentElement;
+        list.removeChild(li);
+      }
+    }
+  }
